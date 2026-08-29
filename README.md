@@ -435,7 +435,6 @@ Entre as próximas etapas planejadas estão:
 - melhorias de contraste;
 - refinamentos de responsividade;
 - otimização do carregamento das imagens;
-- demonstração visual no README;
 - publicação da aplicação com GitHub Pages.
 
 ---
