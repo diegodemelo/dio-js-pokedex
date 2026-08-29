@@ -13,6 +13,10 @@ body {
   color: #2d2d2d;
 }
 
+/* ======================================================
+   LISTAGEM DA POKÉDEX
+   ====================================================== */
+
 .pokedex {
   width: min(100%, 1100px);
 
@@ -34,6 +38,13 @@ body {
   gap: 16px;
 }
 
+.pokemon-card-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
 .pokemon-card {
   position: relative;
 
@@ -52,6 +63,10 @@ body {
   position: relative;
   z-index: 1;
 }
+
+/* ======================================================
+   CORES DOS TIPOS
+   ====================================================== */
 
 .pokemon-card--normal {
   background: #a8a77a;
@@ -125,6 +140,10 @@ body {
   background: #d685ad;
 }
 
+/* ======================================================
+   CARD DA LISTAGEM
+   ====================================================== */
+
 .pokemon-card__number {
   display: block;
 
@@ -192,21 +211,9 @@ body {
   object-fit: contain;
 }
 
-@media (min-width: 700px) {
-  .pokemon-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .pokemon-card {
-    min-height: 210px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .pokemon-list {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+/* ======================================================
+   PAGINAÇÃO
+   ====================================================== */
 
 .pagination {
   display: flex;
@@ -237,4 +244,352 @@ body {
 .pagination button:disabled {
   cursor: wait;
   opacity: 0.6;
+}
+
+/* ======================================================
+   RESPONSIVIDADE DA LISTAGEM
+   ====================================================== */
+
+@media (min-width: 700px) {
+  .pokemon-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pokemon-card {
+    min-height: 210px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .pokemon-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ======================================================
+   PÁGINA DE DETALHES
+   ====================================================== */
+
+.pokemon-detail-page {
+  width: min(100%, 520px);
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+}
+
+.pokemon-detail {
+  position: relative;
+
+  min-height: 100vh;
+
+  background: #ffffff;
+}
+
+/* ======================================================
+   HERO COLORIDO
+   ====================================================== */
+
+.pokemon-detail__hero {
+  position: relative;
+
+  min-height: 360px;
+
+  padding: 24px 24px 110px;
+
+  color: #ffffff;
+
+  /*
+   * Importante:
+   * a imagem precisa ultrapassar o limite do hero
+   * para ficar sobre a área branca.
+   */
+  overflow: visible;
+}
+
+.pokemon-detail__back {
+  display: inline-block;
+
+  margin-bottom: 28px;
+
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.pokemon-detail__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pokemon-detail__name {
+  font-size: 2rem;
+  line-height: 1.1;
+
+  text-transform: capitalize;
+}
+
+.pokemon-detail__number {
+  padding-top: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  opacity: 0.8;
+}
+
+.pokemon-detail__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.pokemon-detail__type {
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+
+  text-transform: capitalize;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ======================================================
+   ARTWORK
+   ====================================================== */
+
+/*
+ * O Pokémon é posicionado de forma absoluta.
+ *
+ * A parte superior permanece dentro do hero colorido.
+ * A parte inferior ultrapassa o hero e aparece sobre
+ * o painel branco.
+ */
+
+.pokemon-detail__image {
+  position: absolute;
+
+  left: 50%;
+  bottom: -48px;
+
+  transform: translateX(-50%);
+
+  z-index: 3;
+
+  width: min(270px, 82%);
+  height: 270px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.pokemon-detail__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* ======================================================
+   PAINEL BRANCO
+   ====================================================== */
+
+.pokemon-detail__content {
+  position: relative;
+  z-index: 2;
+
+  /*
+   * O painel sobe levemente sobre o hero,
+   * reproduzindo a composição da referência.
+   */
+  margin-top: -22px;
+
+  /*
+   * Espaço reservado para a parte do Pokémon
+   * que invade o painel branco.
+   */
+  padding: 72px 24px 40px;
+
+  border-radius: 32px 32px 0 0;
+
+  background: #ffffff;
+}
+
+.pokemon-detail__content section + section {
+  margin-top: 30px;
+}
+
+.pokemon-detail__content h2 {
+  margin-bottom: 16px;
+
+  font-size: 1.1rem;
+}
+
+/* ======================================================
+   SOBRE
+   ====================================================== */
+
+.pokemon-detail__facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.pokemon-detail__facts div {
+  padding: 16px;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  background: #f6f8fc;
+}
+
+.pokemon-detail__facts dt {
+  margin-bottom: 6px;
+
+  color: #777777;
+
+  font-size: 0.75rem;
+}
+
+.pokemon-detail__facts dd {
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ======================================================
+   HABILIDADES
+   ====================================================== */
+
+.pokemon-detail__abilities ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.pokemon-detail__abilities li {
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+
+  text-transform: capitalize;
+
+  background: #f0f2f7;
+}
+
+/* ======================================================
+   BASE STATS
+   ====================================================== */
+
+.pokemon-detail__stats ul {
+  padding: 0;
+
+  list-style: none;
+}
+
+.pokemon-detail__stats li {
+  padding: 10px 0;
+
+  border-bottom: 1px solid #eceef3;
+}
+
+.pokemon-detail__stats li:last-child {
+  border-bottom: none;
+}
+
+.pokemon-detail__stat-info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+
+  margin-bottom: 7px;
+}
+
+.pokemon-detail__stat-info span {
+  color: #666666;
+
+  font-size: 0.85rem;
+}
+
+.pokemon-detail__stat-info strong {
+  font-size: 0.9rem;
+}
+
+.pokemon-detail__stat-bar {
+  height: 6px;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  background: #eceef3;
+}
+
+.pokemon-detail__stat-bar span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #6c79db;
+}
+
+/* ======================================================
+   ESTADOS DE CARREGAMENTO / ERRO
+   ====================================================== */
+
+.pokemon-detail-message {
+  padding: 40px 24px;
+}
+
+.pokemon-detail-message h1 {
+  margin-bottom: 16px;
+}
+
+.pokemon-detail-message p {
+  margin-bottom: 12px;
+}
+
+/* ======================================================
+   RESPONSIVIDADE DOS DETALHES
+   ====================================================== */
+
+@media (min-width: 700px) {
+  .pokemon-detail-page {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    border-radius: 32px;
+
+    overflow: hidden;
+  }
+
+  .pokemon-detail {
+    min-height: auto;
+  }
 }
