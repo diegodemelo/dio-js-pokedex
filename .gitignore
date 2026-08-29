@@ -1,0 +1,21 @@
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Editor / sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporários e artefatos futuros
+tmp/
+dist/
+build/
+coverage/
+node_modules/
